@@ -3,35 +3,55 @@ import {
   ChakraProvider,
   Box,
   Text,
-  Link,
+  Button,
+  Image,
   VStack,
   Code,
   Grid,
   theme,
+  Link,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { KoyweRampSDK } from 'koywe-ramp-sdk';
 
 function App() {
+  const koywe = new KoyweRampSDK({
+    clientId:"63631a561f41f8fd18f8c3e0",
+    callbackUrl:"http://localhost:3000", // redirects back to this react app
+    currencies: [],
+    tokens: [],
+    address:"the destination address",
+    email:"email address of your user",
+    testing:true,
+  })
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
+            <Box boxSize='xs'>
+              <Image src={'logo512.png'} />
+            </Box>
             <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
+              Using our widget is as easy as 1, 2, 3
             </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
+            <Text>
+              <Code fontSize="xl">
+                1. npm i koywe-ramp-sdk<br/>
+                2. import &#123; KoyweRampSDK &#125; from 'koywe-ramp-sdk';<br/>
+                3. new KoyweRampSDK().show();<br/>
+              </Code>
+            </Text>
+            <Button bg='#0D442E' color='#CFFF3A' _hover={{ bg: '#CFFF3A', color: '#0D442E' }} size='lg' onClick={()=>koywe.show()}>
+              Try it out!
+            </Button>
+            <Text>
+              Go to <Code fontSize="xl">/src/App.js</Code> to check under the hood
+            </Text>
+            <Text>
+              Visit <Link href='https://koywe.com' target={'_blank'}>https://koywe.com</Link> for more information.
+            </Text>
           </VStack>
         </Grid>
       </Box>
