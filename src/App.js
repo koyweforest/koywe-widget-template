@@ -23,7 +23,7 @@ function App() {
     currencies: [],
     tokens: [],
     address:"the destination address",
-    email:"email address of your user",
+    email:"email address", //if invalid, will be empty
     testing:true,
   })
   const pathname = window.location.pathname;
