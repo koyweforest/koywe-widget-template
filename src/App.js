@@ -14,7 +14,7 @@ import {
   Link,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { KoyweRampSDK } from 'koywe-ramp-sdk';
+import { KoyweRampSDK } from '@koyweforest/koywe-ramp-sdk';
 
 function App() {
   const koywe = new KoyweRampSDK({
