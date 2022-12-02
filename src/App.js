@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  Alert,
+  AlertIcon,
   ChakraProvider,
   Box,
   Text,
@@ -24,14 +26,21 @@ function App() {
     email:"email address of your user",
     testing:true,
   })
+  const pathname = window.location.pathname;
+  const search = window.location.search;
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
+            {pathname && search && pathname.includes('tracing') &&
+            <Alert status={search.includes('success=true')?'success':'error'}>
+              <AlertIcon />
+              Order ID {pathname.substring(pathname.lastIndexOf('/')+1)} finished {search.includes('success=true')?'sucessfully':'in error'}.
+            </Alert>}
             <Box boxSize='xs'>
-              <Image src={'logo512.png'} />
+              <Image src='/logo512.png' />
             </Box>
             <Text>
               Using our widget is as easy as 1, 2, 3
@@ -50,7 +59,8 @@ function App() {
               Go to <Code fontSize="xl">/src/App.js</Code> to check under the hood
             </Text>
             <Text>
-              Visit <Link href='https://koywe.com' target={'_blank'}>https://koywe.com</Link> for more information.
+              Visit
+               <Link href='https://koywe.com' target={'_blank'}>https://koywe.com</Link> for more information.
             </Text>
           </VStack>
         </Grid>
