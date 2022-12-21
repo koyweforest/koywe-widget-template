@@ -25,7 +25,7 @@ function App() {
     tokens: [],
     address:"the destination address",
     email:"email address", //if invalid, will be empty
-    testing:true,
+    testing:false,
   })
   const pathname = window.location.pathname;
   const search = window.location.search;
