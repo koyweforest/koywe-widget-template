@@ -23,8 +23,8 @@ function App() {
     callbackUrl:"https://widget.koywe.com", // redirects back to this react app
     currencies: [],
     tokens: [],
-    address:"the destination address",
-    email:"email address", //if invalid, will be empty
+    address:"",
+    email:"", //if invalid, will be empty
     testing:false,
   })
   const pathname = window.location.pathname;
